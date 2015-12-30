@@ -73,5 +73,14 @@ describe "#translate" do
   end
 
   # * retain the punctuation from the original phrase
+  it "retains punctuations" do
+    s = translate("If Emma's code is ready, can we call Ron?")
+    s.should == "Ifay Emmaay's odecay isay eadyray, ancay eway allcay Onray?"
+  end
+
+  it "retains multiple punctuations" do
+    s = translate("That food is Gina's, why are you eating it?!#@")
+    s.should == "Atthay oodfay isay Inagay's, whyay areay ouyay eatingay itay?!#@"
+  end
 
 end

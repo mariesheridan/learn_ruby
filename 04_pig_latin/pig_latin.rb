@@ -6,16 +6,17 @@ def translate(phrase)
         if (/^[A-Z]/.match(word)) != nil
             capitalized = true
         end
-        parts = word.partition(/(?i)^(qu|[bcdfghjklmnpqrstvwxyz])*/)
+        withPunctuation = word.partition(/(?i)('s|[^a-z0-9])*$/)
+        parts = withPunctuation[0].partition(/(?i)^(qu|[bcdfghjklmnpqrstvwxyz])*/)
         if parts[0] == ""
             newWord = parts[2] + parts[1] + "ay"
             if capitalized == true
                 newWord.capitalize!
             end
-            answer.push(newWord)
         else
-            answer.push(word + "ay")
+            newWord = withPunctuation[0] + "ay"
         end
+        answer.push(newWord + withPunctuation[1])
     end
     answer.join(" ")
 end
