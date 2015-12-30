@@ -67,6 +67,11 @@ describe "#translate" do
 
   # Test-driving bonus:
   # * write a test asserting that capitalized words are still capitalized (but with a different initial capital letter, of course)
+  it "retains capitalizations" do
+    s = translate("We went to Geraldton")
+    s.should == "Eway entway otay Eraldtongay"
+  end
+
   # * retain the punctuation from the original phrase
 
 end
